@@ -1,0 +1,30 @@
+{% extends 'partials/base.html' %}
+{% block title %}post detail page{% endblock %}
+
+{% block nav %}
+{% include 'partials/nav2.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+   <div class="row mt-5 pt-5">
+    <div class="col-lg-8 offset-md-2">
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="alert alert-danger">
+                    Do you want to Delete this post?
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <a class="btn btn-dark btn-sm" href="{% url 'blog-post-detail' post.id %}">Cancel</a>
+                    <input class="btn btn-outline-secondary btn-sm" type="submit" value="Confirm">
+                </form>
+            </div>
+        </div>
+    </div>
+   </div>
+</div>
+
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}

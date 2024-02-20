@@ -1,0 +1,63 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}post detail page{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block nav %}
+{% include 'partials/nav.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="container text-center py-5 px-2">
+      <div>
+          <h1>{{ post.title }}</h1>
+          <p>{{ post.category|title }}</p>
+          <p>{{ post.date_created|timesince }}</p>
+      </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+      <div class="row text-center">
+          <div class="col-12">
+            <img src="{{ post.author.profilemodel.image.url }}" alt="" style="max-width: 100%; max-height: 600px; ">
+          </div>
+          <div class="col-12 px-5">
+          </div>
+      </div>
+      <div class="col-12 px-5 text-left" style="text-align: justify;">
+        <p class="px-2">{{ post.content }}</p>
+      </div>
+      <div class="col-12 text-left">
+        <p class="mt-3">
+          <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Comment(s) {{ post.comment_count }}
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div style="height: 200px; overflow-y: scroll;" class="card card-body">
+            {% for comment in post.comment %}
+            <p class="text-justify">
+              {{ comment.content }}
+              <hr>
+            </p>
+            {% endfor %}
+          </div>
+        </div>
+        <form method="POST">
+          {% csrf_token %}
+          {{ c_form|crispy }}
+          <button class="btn btn-dark btn-small" type="submit">Comment</button>
+      </form>
+      </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}

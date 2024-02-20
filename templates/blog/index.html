@@ -1,0 +1,197 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}index page{% endblock %}
+
+{% block nav %}
+{% include 'partials/nav.html' %}
+{% endblock %}
+
+{% block content %}
+     <!-- Topic Section-->
+     <section class="pt-5">
+        <div class="container my-5 py-5">
+            <h1 class=" d-flex justify-content-center pb-4">The Origin of All Culture.</h1>
+            <div class="container text-center">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-6 g-2 g-lg-3">
+                  <div class="col">
+                    <div class="custom_border p-3">Technology</div>
+                  </div>
+                  <div class="col">
+                    <div class="custom_border p-3">Business</div>
+                  </div>
+                  <div class="col">
+                    <div class="custom_border p-3">Religion</div>
+                  </div>
+                  <div class="col">
+                    <div class="custom_border d-none d-md-block p-3">Health</div>
+                  </div>
+                  <div class="col">
+                    <div class="custom_border d-none d-md-block p-3">Style</div>
+                  </div>
+                  <div class="col">
+                    <div class="custom_border d-none d-md-block p-3">Travel</div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--TOP STORIES-->
+    <section class="">
+        <div class="container my-5 py-5">
+            <h2>Top Stories</h2>
+            <hr class="custom-hr border-4 opacity-100">
+        </div>
+    </section>
+    
+    <section class="mb-2 pb-2">
+        <div class="container mb-5 pb-2">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                  <div class="no_border card">
+                    <img src="images/damian-patkowski-T-LfvX-7IVg-unsplash.jpg" class="card-img-top no_border top-stories-image" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text text-justify">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="no_border card">
+                    <img src="images/Jerusalem1.webp" class="card-img-top no_border top-stories-image" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </section>
+
+    <!--Latest Stories-->
+    <section class="">
+        <div class="container my-5 py-5">
+            <h2>Latest Stories</h2>
+            <hr class="custom-hr border-4 opacity-100">
+        </div>
+    </section>
+
+    <section class="mb-2 pb-2">
+        <div class="container mb-5 pb-2">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for post in posts|slice:":6" %}
+                    <a href="{% url 'blog-post-detail' post.id %}">
+                        <div class="col">
+                            <div class="no_border card">
+                                <img src="{{ post.author.profilemodel.image.url}}" alt="..." class="no_border post-image card-img-top">
+                                <div class="card_body">
+                                    <h5 class="card-title">{{post.title}}</h5>
+                                    <p class="card-text text-justify">{{post.content}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+                </a>
+            </div>
+            
+        </div>
+        <div class="container d-flex my-2 pb-2">
+            <button type="button" class="btn btn-outline-dark btn-lg mx-auto">VIEW ALL POSTS</button>
+        </div> 
+    </section>
+
+    <!--Technology Section-->
+    <section class="">
+        <div class="container my-5 py-5">
+            <h2>Technology</h2>
+            <hr class="custom-hr border-4 opacity-100">
+        </div>
+    </section>
+    <section class="mb-5 pb-5">
+        <div class="container mb-5 pb-2">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for post in tech|slice:":3" %}
+                    <div class="col">
+                        <div class="no_border card">
+                            <img src="images/olga-guryanova-ft7vJxwl2RY-unsplash.jpg" alt="..." class="no_border post-image card-img-top">
+                            <div class="card_body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container d-flex my-2 pb-2">
+            <button type="button" class="btn btn-outline-dark btn-lg mx-auto">VIEW ALL POSTS</button>
+        </div> 
+    </section>
+    <!--Lifestyle Section-->
+    <section class="">
+        <div class="container my-5 py-5">
+            <h2>Lifestyle</h2>
+            <hr class="custom-hr border-4 opacity-100">
+        </div>
+    </section>
+    <section class="mb-5 pb-5">
+        <div class="container mb-5 pb-2">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for post in lifestyle|slice:":3" %}
+                    <div class="col">
+                        <div class="no_border card">
+                            <img src="images/MTk1NzIyMjQwMzA0Njg2OTg3.webp" alt="..." class="no_border post-image card-img-top">
+                            <div class="card_body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>     
+        </div>
+        <div class="container d-flex my-2 py-2">
+            <button type="button" class="btn btn-outline-dark btn-lg mx-auto">VIEW ALL POSTS</button>
+       </div> 
+    </section>
+
+    <!--Religion Section-->
+    <section class="">
+        <div class="container my-5 py-5">
+            <h2>Religion</h2>
+            <hr class="custom-hr border-4 opacity-100">
+        </div>
+    </section>
+    <section>
+        <div class="container mb-5 pb-2">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for post in religion|slice:":3" %}
+                    <a href="{% url 'blog-post-detail' post.id %}">
+                        <div class="col">
+                            <div class="no_border card">
+                                <img src="images/MTk1NzIxODI3OTg3NzYxMDM1.webp" alt="..." class="no_border post-image card-img-top">
+                                <div class="card_body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text text-justify">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>           
+        </div>
+        <div class="container d-flex my-2 pb-2">
+            <button type="button" class="btn btn-outline-dark btn-lg mx-auto">VIEW ALL POSTS</button>
+        </div> 
+    </section>
+
+{% endblock %}
+{% block newsletter %}
+{% include 'partials/newsletter.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}

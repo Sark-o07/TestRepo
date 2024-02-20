@@ -1,0 +1,49 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}UnityLens | Category page{% endblock %}
+
+{% block nav %}
+{% include 'partials/nav.html' %}
+{% endblock %}
+
+{% block content %}
+<!--Technology Section-->
+<section class="">
+    <div class="container my-5 py-5">
+        <h1>{{ cats }}</h1>
+        <hr class="custom-hr border-4 opacity-100">
+    </div>
+</section>
+    {% if category_posts %}
+        <section class="mb-5 pb-5">
+            <div class="container mb-5 pb-2">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for post in category_posts %}
+                        <div class="col">
+                            <div class="no_border card">
+                                <img src="images/olga-guryanova-ft7vJxwl2RY-unsplash.jpg" alt="..." class="no_border post-image card-img-top">
+                                <div class="card_body">
+                                    <h5 class="card-title">{{ post.title}}</h5>
+                                    <p class="card-text">{{post.content}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+    {% else %}
+            <div class="container">
+                <h3>Sorry this category doesn't exist yet...</h3>
+            </div>
+            
+    {% endif %}
+</section>
+{% endblock %}
+
+{% block newsletter %}
+{% include 'partials/newsletter.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}

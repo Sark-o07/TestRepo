@@ -1,0 +1,63 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}Profile page{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block nav %}
+  {% include 'partials/nav2.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="container" style="padding-top: 200px; padding-bottom: 200px;">
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <div class="card">
+              
+                <div class="card-body text-center">
+                    <img class="img-thumbnail" src="{{ user.profilemodel.image.url }}" alt="profile-img" style="border-radius: 100%; width: 200px; height: 196px; object-fit: cover;">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p class="card-text">First Name & Last Name.</p>
+                    <p class="card-text">Bio...</p>
+                    <p class="card-text">social links</p>
+                </div>
+                <hr>
+                
+            </div>
+            
+        </div>
+    </div>
+  </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile information</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="img-thumbnail" src="{{ user.profilemodel.image.url }}" alt="">
+              </div>
+              <div class="col-md-8">
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ u_form|crispy }}
+                  {{ p_form|crispy }}
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-dark btn-sm">Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+{% endblock %}
