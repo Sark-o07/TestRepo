@@ -1,9 +1,10 @@
 from django import forms
-from .models import PostModel, Comment, CategoryModel
+from .models import PostModel, Comment
+'''CategoryModel'''
 
 
 choice_list = [(None, 'None')]  # Add a None option
-choice_list += list(CategoryModel.objects.all().values_list('name', 'name'))
+'''choice_list += list(CategoryModel.objects.all().values_list('name', 'name'))'''
 
 class PostModelForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):

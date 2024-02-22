@@ -1,10 +1,65 @@
-body {
-    background-color:#fffff4; /* Adjust the value as needed */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --Playfair: 'Playfair Display', serif;
+    --Quicksand: 'Quicksand', sans-serif;
+    --Roboto: 'Roboto', sans-serif;
+    --dark: #3c393d;
+    --exDark: #2b2b2b;
+    --Primary: #025464;
+    --Secondar: #E3F4F4;
+    --Nav: #F2EFE5;
+    --CustRed: #fd8f44;
 }
+*{
+    padding: 0;
+    margin: 0;
+    font-family: var(--Quicksand);
+}
+body{
+    line-height: 1.4;
+    color: var(--dark);
+}
+
 /* Nav Bar */
-.bg-body-color {
-    background-color: #fffff4;
+ .navbar-brand {
+    color: var(--Primary);
+    font-size: 200%;
+    display: block;
+    text-align: center;
+    font-family: var(--Playfair);
+ }
+
+ .navbar-brand:hover{
+    opacity: 0.7;
+    color: var(--CustRed);
+ }
+
+/* Nav Bar */
+.cust-nav {
+    background-color: var(--Nav);
 }
+
+.nav-icons {
+    color: var(--CustRed);
+}
+
+.nav-icons:hover {
+    color: var(--Primary);
+}
+
+footer .socials {
+    padding-top: 2.5rem;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
 
 /* Custom CSS to define button size */
 .fixed-size-button {
@@ -21,6 +76,15 @@ body {
     border: 1px solid #574234;
     border-radius: 10px;
 }
+
+/* Top Section */
+
+
+::selection {
+    color: #fff;
+    background: var(--Primary);
+}
+
 
 /* Post Card */
 .no_border {
@@ -59,10 +123,7 @@ body {
 } */
 
 /* FOOTER SECTION */
-footer {
-	/* background: #101010; */
-	padding: 86px 0;
-}
+
 
 .single-box p {
 	/* color: #fff; */

@@ -4,14 +4,14 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class CategoryModel(models.Model):
-    name = models.CharField(max_length=100)
+# class CategoryModel(models.Model):
+#     name = models.CharField(max_length=100)
     
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
     
-    def get_absolute_url(self):
-        return reverse('blog-index')
+#     def get_absolute_url(self):
+#         return reverse('blog-index')
 
 class PostModel(models.Model):
     id = models.AutoField(primary_key=True)

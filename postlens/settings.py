@@ -138,6 +138,10 @@ LOGIN_REDIRECT_URL = 'blog-index'
 
 LOGIN_URL = 'users-login'
 
+STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+        ]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
