@@ -1,9 +1,5 @@
-// Enable tooltips
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
-// Enable Logout Icon
-document.getElementById("logoutButton").addEventListener("click", function(event) {
-    event.preventDefault(); // Prevent the default behavior of the anchor tag (navigating to a new page)
-    document.getElementById("logoutForm").submit(); // Submit the form
+// Header Background Change on scroll
+let navbar = document.querySelector("navbar");
+window.addEventListener("scroll", () => {
+    header.classList.toggle("shadow", window.scrollY > 0);
 });

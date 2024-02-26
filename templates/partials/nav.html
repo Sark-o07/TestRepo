@@ -36,54 +36,56 @@
   </nav> -->
 
    <!-- Nav Section-->
+  <header>
    <nav class="navbar cust-nav navbar-expand-lg fixed-top">
-    <div class="container">
-        <img src="" alt="">
-        <a class="navbar-brand" href = "/">UnityLens</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                
-                <li class="nav-item">
-                    <!-- Button trigger modal -->
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link active" href="#">
-                        <i class=" nav-icons fa-solid fa-magnifying-glass fa-xl d-none d-sm-inline"  data-bs-toggle="tooltip" title="search" data-bs-placement="bottom"></i>
-                        <p class="d-lg-none d-sm-block">Search</p>
-                    </a> 
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'blog-write' %}" data-bs-toggle="tooltip" title="post" data-bs-placement="bottom">
-                        <i class="nav-icons fa-regular fa-pen-to-square fa-xl me-1 d-none d-lg-inline"></i>
-                        <p class="d-lg-none d-md-block">Create a Post</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users-profile' %}" data-bs-toggle="tooltip" title="profile" data-bs-placement="bottom">
-                        <i class="nav-icons fa-regular fa-user fa-xl d-none d-lg-inline"></i>
-                        <p class="d-lg-none d-md-block">profile</p>
-                    </a>
-                </li>
-                {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                    <form id="logoutForm" method="post" action="{% url 'users-logout' %}">
-                        {% csrf_token %}
-                        <a class="nav-link" id="logoutButton" href="#" data-bs-toggle="tooltip" title="logout" data-bs-placement="bottom">
-                            <i class="nav-icons fa-solid fa-right-from-bracket fa-xl d-none d-lg-inline"></i>
-                            <p class="d-lg-none d-md-block">Logout</p>
+        <div class="container">
+            <img src="" alt="">
+            <a class="navbar-brand" href = "/">UnityLens</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    
+                    <li class="nav-item">
+                        <!-- Button trigger modal -->
+                        <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link active" href="#">
+                            <i class=" nav-icons fa-solid fa-magnifying-glass fa-xl d-none d-sm-inline"  data-bs-toggle="tooltip" title="search" data-bs-placement="bottom"></i>
+                            <p class="d-lg-none d-sm-block">Search</p>
+                        </a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'blog-write' %}" data-bs-toggle="tooltip" title="post" data-bs-placement="bottom">
+                            <i class="nav-icons fa-regular fa-pen-to-square fa-xl me-1 d-none d-lg-inline"></i>
+                            <p class="d-lg-none d-md-block">Create a Post</p>
                         </a>
-                    </form>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users-login' %}" data-bs-toggle="tooltip" title="login" data-bs-placement="bottom" method="post">
-                        <i class="nav-icons fa-solid fa-right-to-bracket fa-xl d-none d-lg-inline"></i>
-                        <p class="d-lg-none d-md-block">Login</p>
-                    </a>
-                </li>
-                {% endif %}
-            </ul>  
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users-profile' %}" data-bs-toggle="tooltip" title="profile" data-bs-placement="bottom">
+                            <i class="nav-icons fa-regular fa-user fa-xl d-none d-lg-inline"></i>
+                            <p class="d-lg-none d-md-block">profile</p>
+                        </a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <form id="logoutForm" method="post" action="{% url 'users-logout' %}">
+                            {% csrf_token %}
+                            <a class="nav-link" id="logoutButton" href="#" data-bs-toggle="tooltip" title="logout" data-bs-placement="bottom">
+                                <i class="nav-icons fa-solid fa-right-from-bracket fa-xl d-none d-lg-inline"></i>
+                                <p class="d-lg-none d-md-block">Logout</p>
+                            </a>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users-login' %}" data-bs-toggle="tooltip" title="login" data-bs-placement="bottom" method="post">
+                            <i class="nav-icons fa-solid fa-right-to-bracket fa-xl d-none d-lg-inline"></i>
+                            <p class="d-lg-none d-md-block">Login</p>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>  
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
