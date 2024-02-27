@@ -8,14 +8,18 @@
 
 {% block content %}
 <div class="container">
-   <div class="row mt-5 pt-5">
-    <div class="col-lg-8 offset-md-2">
-        <div class="card shadow">
+   <div class="row mt-5 pt-3">
+    <div class="col-lg-6 mx-auto">
+        <div class="card my-3 p-2 shadow">
             <div class="card-body">
-                <form method="POST">
+                <form class="custom-form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+                    {{ form.media }}
                     {{ form|crispy }}
-                    <input class="btn btn-outline-dark btn-sm" type="submit" value="Save">
+                    <div class="d-flex gap-2">
+                        <input class="btn solid-btn btn-sm" type="submit" value="Save">
+                        <div class="btn btn-sm lighter-btn"><a class="" href="{% url 'blog-post-detail' post.id %}">Cancel</a>
+                        </div></div>
                 </form>
             </div>
         </div>

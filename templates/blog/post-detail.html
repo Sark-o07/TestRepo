@@ -10,6 +10,13 @@
 
 {% block content %}
 <section>
+  {% if post.author == request.user %}
+    <div class="actionButton d-flex container text-left mt-4 px-5">
+      <a href="{% url 'blog-post-edit' post.id %}" class="ms-auto px-2">Edit</a>
+      <span>•</span>
+      <a href="{% url 'blog-post-delete' post.id %}" class="px-2">Delete</a>
+    </div>
+  {% endif %}
   <div class="container text-center py-5 px-2">
       <div>
           <h1>{{ post.title }}</h1>
@@ -20,25 +27,29 @@
 </section>
 
 <section>
-  <div class="container">
+  <div class="container post-box">
       <div class="row text-center">
-          <div class="col-12">
-            <img src="{{ post.author.profilemodel.image.url }}" alt="" style="max-width: 100%; max-height: 600px; ">
+        {% if post.image %}
+          <div class="title-img col-12 mb-5">
+            <img src="{{ post.image.url }}" alt="">
           </div>
-          <div class="col-12 px-5">
-          </div>
+        {% endif %}
+          
       </div>
-      <div class="col-12 px-5 text-left" style="text-align: justify;">
-        <p class="px-2">{{ post.content }}</p>
+      <div class="col-12 px-5 text-left mb-4">
+        <h5 class=""> {{ post.intro }} </h5>
       </div>
-      <div class="col-12 text-left">
-        <p class="mt-3">
-          <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Comment(s) {{ post.comment_count }}
+      <div class="post col-12 px-5 text-left">
+          {{ post.content|safe }}
+      </div>
+      <div class="col-12 px-5 text-left">
+        <p class="mt-3 py-4">
+          <a class="comment-link" data-bs-toggle="collapse" href="#collapseCommentBox" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fa-regular fa-comment fa-lg"></i> {{ post.comment_count }}
           </a>
         </p>
-        <div class="collapse" id="collapseExample">
-          <div style="height: 200px; overflow-y: scroll;" class="card card-body">
+        <div class="collapse" id="collapseCommentBox">
+          <div class="card card-body comment-box">
             {% for comment in post.comment %}
             <p class="text-justify">
               {{ comment.content }}
@@ -50,7 +61,7 @@
         <form method="POST">
           {% csrf_token %}
           {{ c_form|crispy }}
-          <button class="btn btn-dark btn-small" type="submit">Comment</button>
+          <button class="btn comment-btn btn-sm" type="submit">Comment</button>
       </form>
       </div>
   </div>

@@ -6,7 +6,16 @@ from django.core.validators import FileExtensionValidator
 class ProfileModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='flower.png', upload_to='profile', validators=[
-                              FileExtensionValidator(['png', 'jpg'])])
+                              FileExtensionValidator(['png', 'jpg', 'jpeg', 'webp'])])
+    
+    profile_bio = models.CharField(blank=True, null=True, max_length=200)
+    website_link = models.CharField(blank=True, null=True, max_length=200)
+    medium_link = models.CharField(blank=True, null=True, max_length=200)
+    reddit_link = models.CharField(blank=True, null=True, max_length=200)
+    quora_link = models.CharField(blank=True, null=True, max_length=200)
+    pinterest_link = models.CharField(blank=True, null=True, max_length=200)
+    
+    
     
     def __str__(self):
         return self.user.username

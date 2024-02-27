@@ -32,7 +32,20 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
-
+    image = forms.ImageField(label="Profile Picture")
+    profile_bio = forms.CharField(label='Profile Bio', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Profile Bio', 'rows': 4,}))
+    website_link = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Website Link'}))
+    medium_link = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Meduim Link'}))
+    reddit_link = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Reddit Link'}))
+    quora_link = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Quora Link'}))
+    pinterest_link = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Pinterest Link'}))
+    
     class Meta:
         model = ProfileModel
-        fields = ['image',]
+        fields = ['image', 'profile_bio', 'website_link', 'medium_link', 'reddit_link', 'quora_link', 'pinterest_link',]
+    
+    def __init__(self, *args, **kwargs):
+        super(ProfileUpdateForm, self).__init__(*args, **kwargs)
+
+        for fieldname in  ['image', 'profile_bio', 'website_link', 'medium_link', 'reddit_link', 'quora_link', 'pinterest_link',]:
+            self.fields[fieldname].required = False

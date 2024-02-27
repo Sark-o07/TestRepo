@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'crispy_bootstrap5',
+    'ckeditor',
+    'ckeditor_uploader',
+    'django_editorjs',
+    'tinymce',
 
 ]
 
@@ -134,6 +138,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
 LOGIN_REDIRECT_URL = 'blog-index'
 
 LOGIN_URL = 'users-login'
@@ -145,6 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+
 
 # For password reset
 
