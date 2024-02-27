@@ -12,9 +12,10 @@ class PostModelForm(forms.ModelForm):
 
     class Meta:
         model = PostModel
-        fields = ('title', 'content', 'category')
+        fields = ('title', 'intro', 'image', 'content', 'category')
 
         widgets = {
+            'intro': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
             'content': forms.Textarea(attrs={'rows': 8, 'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
         }
@@ -23,7 +24,13 @@ class PostModelForm(forms.ModelForm):
 class PostUpdateForm(forms.ModelForm):
     class Meta:
         model = PostModel
-        fields = ('title', 'content')
+        fields = ('title', 'intro', 'image', 'content', 'category')
+        
+        widgets = {
+            'intro': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'rows': 8, 'class': 'form-control'}),
+            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
+        }
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Add comments here...'}))
